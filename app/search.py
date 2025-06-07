@@ -26,7 +26,7 @@ if suggestions:
     addresses = data[data["nom"] == selection]["adresse"]
     for address in addresses:
         cad = adresse_vers_parcelle(address)
-        df = pd.read_csv("data/cadastre_avg.csv")
+        df = pd.read_csv("data/cadastre_yearly_summary.csv")
         row = df[df['Cadastre'] == cad]
         if not row.empty:
             values = row[years].values.flatten()
@@ -36,7 +36,7 @@ if suggestions:
             ax.set_xlabel("Année")
             ax.set_ylabel("Valeur foncière")
             st.pyplot(fig)
-            st.write(f"En 2024, ce bien valait {round(row['2024'].values[0])}€ par mètre carré.")
-            st.write(f"En 2023, ce bien valait {round(row['2023'].values[0])}€ par mètre carré.")
+            st.write(f"En 2024, ce bien valait {round(row['2024'].values[0])}€ par mètre carré et il y a eu {row['transactions 2024'].values[0]} transactions.")
+            st.write(f"En 2023, ce bien valait {round(row['2023'].values[0])}€ par mètre carré et il y a eu {row['transactions 2023'].values[0]} transactions..")
 elif recherche:
     st.write("Aucun nom correspondant.")

@@ -45,14 +45,13 @@ def get_parcelle_from_coords(lat, lon, insee_code):
             os.remove(unzipped_filename)
         return matching_parcels['commune'].values[0] + matching_parcels['section'].values[0]
     else:
+        if os.path.exists(filename):  # the .gz file
+            os.remove(filename)
+        if os.path.exists(unzipped_filename):  # the extracted .json file
+            os.remove(unzipped_filename)
         print("No matching parcel found.")
 
 def adresse_vers_parcelle(address):
     lat, lon, insee_code = geocode_address(address)
     parcelle = get_parcelle_from_coords(lat, lon, insee_code)
     return parcelle
-
-# Exemple
-adresse = "10 rue de la Paix, 75002 Paris"
-parcelle = adresse_vers_parcelle(adresse)
-print(parcelle)
