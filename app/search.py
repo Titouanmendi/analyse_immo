@@ -37,6 +37,7 @@ if suggestions:
             ax.set_ylabel("Valeur foncière")
             st.pyplot(fig)
             st.write(f"En 2024, ce bien valait {round(row['2024'].values[0])}€ par mètre carré et il y a eu {row['transactions 2024'].values[0]} transactions.")
-            st.write(f"En 2023, ce bien valait {round(row['2023'].values[0])}€ par mètre carré et il y a eu {row['transactions 2023'].values[0]} transactions..")
+            st.write(f"En 2023, ce bien valait {round(row['2023'].values[0])}€ par mètre carré et il y a eu {row['transactions 2023'].values[0]} transactions.")
+            st.write(f"Il s'agit d'une évolution de {round((row['2024'].values[0] - row['2023'].values[0]) / row['2023'].values[0] * 100)}%")
 elif recherche:
     st.write("Aucun nom correspondant.")
