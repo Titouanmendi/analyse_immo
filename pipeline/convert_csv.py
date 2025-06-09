@@ -77,7 +77,7 @@ def remove_mixed_commercial_apartment(df):
     return df
 
 
-def remove_useless(df):
+def remove_useless(df, col_to_drop):
     """
     Remove useless columns and rows from a dataframe
     
@@ -146,7 +146,7 @@ def convert_txt(file_to_csv):
         df = add_cadastre(df)
         df = df.apply(pd.to_numeric, errors='ignore')
         df = remove_mixed_commercial_apartment(df)
-        df = remove_useless(df)
+        df = remove_useless(df, col_to_drop)
         df = merge_rows(df)
         df.to_csv(file_to_csv[file], index=False, sep=",", encoding="utf-8")
 
